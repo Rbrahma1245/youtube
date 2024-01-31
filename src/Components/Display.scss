@@ -1,0 +1,84 @@
+@import "../styles/variables";
+@import "../styles/extends";
+
+.text-field {
+  @extend %input-text;
+  width: 80%;
+}
+
+.box {
+  @extend %display-flex;
+  margin-bottom: 10px;
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .box-header {
+    margin-left: 1rem;
+    text-align: left;
+    width: 100%;
+  }
+
+  .box-title {
+    @extend %display-flex;
+    align-items: center
+  }
+
+  .display-time{
+    margin-left: 20px;
+    color : $darkYellow;
+    font-size: 12px;
+  }
+}
+
+.container {
+  @extend %card-color;
+  margin-bottom: 10px;
+}
+
+.add-comment-btn {
+  @extend %btn;
+  background-color: $violet;
+  color: $white;
+  padding: 1rem;
+
+  &:hover {
+    background-color: $darkviolet;
+  }
+}
+
+.btn-decor {
+  display: flex;
+  gap: 5px;
+  margin-top: 10px;
+
+  button {
+    @extend %btn;
+    padding: 0.5rem;
+    width: 2.5rem;
+  
+  }
+
+  .like {
+    &:hover {
+ 
+      background-color: $darkgreen;
+    }
+  }
+  .dislike {
+    &:hover {
+    
+      background-color: $peach;
+    }
+  }
+  .reply{
+    width: 3.5rem;
+    &:hover{
+      background-color: #768688;
+      color: $white;
+    }
+  }
+ 
+}
