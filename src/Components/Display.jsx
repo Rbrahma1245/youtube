@@ -8,30 +8,49 @@ export class Display extends Component {
     super();
   }
 
+  componentDidMount() {
+    this.intervalId = setInterval(() => {
+      this.updateTimeDifferences();
+    }, 10000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intervalId);
+  }
+
+  updateTimeDifferences() {
+      let updatedCommentList = this.props.commentList.map((comment) => {
+
+      let current_date = new Date();
+      let timeDifference = current_date - comment.date;
+      let secondsDifference = Math.floor(timeDifference / 1000);
+      let minutesDifference = Math.floor(secondsDifference / 60);
+      let hoursDifference = Math.floor(minutesDifference / 60);
+
+      comment.hours = hoursDifference % 24;
+      comment.minutes = minutesDifference % 60;
+      comment.seconds = secondsDifference % 60;
+
+      return comment;
+    });
+
+    this.setState({
+      commentList: updatedCommentList,
+    });
+  }
+
   render() {
     console.log(this.props.commentList);
     return (
       <div style={{ marginTop: 10 }}>
         {this.props.commentList.map((e, i) => {
-          let current_date = new Date();
-
-          let timeDifference = current_date - e.date;
-
-          let secondsDifference = Math.floor(timeDifference / 1000);
-          let minutesDifference = Math.floor(secondsDifference / 60);
-          let hoursDifference = Math.floor(minutesDifference / 60);
-
-          let remainingHours = hoursDifference % 24;
-          let remainingMinutes = minutesDifference % 60;
-          let remainingSeconds = secondsDifference % 60;
-
           return (
             <Card
               key={e.id + i}
               e={e}
-              remainingHours={remainingHours}
-              remainingMinutes={remainingMinutes}
-              remainingSeconds={remainingSeconds}
+              remainingHours={e.hours}
+              remainingMinutes={e.minutes}
+              remainingSeconds={e.seconds}
             />
           );
         })}

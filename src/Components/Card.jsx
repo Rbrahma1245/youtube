@@ -13,7 +13,6 @@ export class Card extends Component {
 
     let { remainingSeconds, remainingMinutes, remainingHours } = this.props;
 
-    
 
     return (
       <div className="container">
@@ -38,7 +37,7 @@ export class Card extends Component {
                     <span>{remainingMinutes} min ago</span>
                   )
                 ) : (
-                  <span>{remainingHours} hours ago</span>
+                  <span>{remainingHours}</span>
                 )}
               </span>
             </div>
