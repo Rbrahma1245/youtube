@@ -4,15 +4,12 @@ import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 export class Card extends Component {
   constructor() {
     super();
- 
   }
 
- 
   render() {
     let { name, image, comment } = this.props.e;
 
     let { remainingSeconds, remainingMinutes, remainingHours } = this.props;
-
 
     return (
       <div className="container">
@@ -36,8 +33,10 @@ export class Card extends Component {
                   ) : (
                     <span>{remainingMinutes} min ago</span>
                   )
+                ) : remainingHours > 0 ? (
+                  <span>{remainingHours} hour ago</span>
                 ) : (
-                  <span>{remainingHours}</span>
+                  ""
                 )}
               </span>
             </div>

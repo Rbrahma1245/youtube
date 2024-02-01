@@ -23,12 +23,16 @@
 
   .box-title {
     @extend %display-flex;
-    align-items: center
+    align-items: center;
+
+    span {
+      font-family: cursive;
+    }
   }
 
-  .display-time{
+  .display-time {
     margin-left: 20px;
-    color : $darkYellow;
+    color: $darkYellow;
     font-size: 12px;
   }
 }
@@ -58,27 +62,23 @@
     @extend %btn;
     padding: 0.5rem;
     width: 2.5rem;
-  
   }
 
   .like {
     &:hover {
- 
       background-color: $darkgreen;
     }
   }
   .dislike {
     &:hover {
-    
       background-color: $peach;
     }
   }
-  .reply{
+  .reply {
     width: 3.5rem;
-    &:hover{
-      background-color: #40A2E3;
+    &:hover {
+      background-color: #40a2e3;
       color: $white;
     }
   }
- 
 }
